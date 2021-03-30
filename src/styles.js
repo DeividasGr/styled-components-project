@@ -1,3 +1,5 @@
+import { css } from 'styled-components';
+
 //reusable helper functions (mixins)
 
 //object for colors
@@ -27,4 +29,51 @@ export const setBackground = ({
 } = {}) => {
   return `background: linear-gradient(${color}, ${color}),
      url(${img}) center/cover fixed no-repeat`;
+};
+
+//function for rem values
+export const setRem = (number = 16) => {
+  return `${number / 16}rem`;
+};
+
+//function for letter spacing
+export const setLetterSpacing = (number = 2) => {
+  return `letter-spacing:${number}px`;
+};
+
+//function for borders
+
+export const setBorder = ({
+  width = '2px',
+  style = 'solid',
+  color = 'black',
+} = {}) => {
+  return `border:${width} ${style} ${color}`;
+};
+
+//object for media query size
+const sizes = {
+  large: 1200,
+  desktop: 992,
+  tablet: 768,
+  phone: 576,
+};
+
+// Iterate through the sizes and create a media template
+export const media = Object.keys(sizes).reduce((acc, label) => {
+  acc[label] = (...args) => css`
+    @media (min-width: ${sizes[label] / 16}em) {
+      ${css(...args)}
+    }
+  `;
+  return acc;
+}, {});
+
+//function for animation transitions
+export const setTransition = ({
+  property = 'all',
+  time = '0.3s',
+  timing = 'ease-in-out',
+} = {}) => {
+  return `transition:${property} ${time} ${timing}`;
 };

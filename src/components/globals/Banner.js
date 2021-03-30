@@ -1,5 +1,31 @@
 import styled, { css, keyframes } from 'styled-components';
-import { setColor } from '../../styles';
+import {
+  setColor,
+  setRem,
+  setLetterSpacing,
+  setBorder,
+  media,
+} from '../../styles';
+
+const fadeIn = (start, point, end) => {
+  const animation = keyframes`
+   0% {
+      opacity: 0;
+      transform: translateY(${start});
+   },
+   50% {
+      opacity: 0.5;
+      transform: translateY(${point});
+   },
+   100% {
+      opacity: 1;
+      transform: translateY(${end});
+   }
+   `;
+  return css`
+    animation: ${animation} 2s ease-in-out;
+  `;
+};
 
 function Banner({ title, text, children, greeting }) {
   return (
@@ -18,12 +44,12 @@ function Banner({ title, text, children, greeting }) {
 const BannerWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   text-align: center;
-  padding: 60px 32px;
-  letter-spacing: 3px;
+  padding: ${setRem(60)} ${setRem(32)};
+  ${setLetterSpacing(3)};
   color: ${setColor.mainWhite};
   h1 {
     text-transform: capitalize;
-    font-size: 48px;
+    font-size: ${setRem(48)};
     color: ${setColor.primaryColor};
     span {
       color: ${setColor.mainWhite};
@@ -33,18 +59,24 @@ const BannerWrapper = styled.div`
     width: 85%;
     margin: 0 auto;
   }
-  @media (min-width: 768px) {
-    width: 70vw;
-    border: 6px solid ${setColor.primaryColor};
+
+  ${media.phone`
+   width: 70vw;
+    ${setBorder({
+      width: '6px',
+      style: 'solid',
+      color: setColor.primaryColor,
+    })};
     p {
       width: 75%;
     }
-  }
+  `}
+
   h1 {
-    //animation
+    ${fadeIn('100%', '-10%', 0)}
   }
   .info {
-    //animation
+    ${fadeIn('-100%', '10%', 0)}
   }
 `;
 
