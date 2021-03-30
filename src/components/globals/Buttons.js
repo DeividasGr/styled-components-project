@@ -5,6 +5,7 @@ import {
   setLetterSpacing,
   setBorder,
   setFont,
+  setTransition,
 } from '../../styles';
 
 export const PrimaryBtn = styled.button`
@@ -17,10 +18,15 @@ export const PrimaryBtn = styled.button`
   padding: ${setRem(17)} ${setRem(36)};
   ${setBorder({ color: setColor.primaryColor })};
   ${setLetterSpacing(3)};
+  ${setTransition()};
   &:hover {
     background-color: transparent;
     color: ${setColor.primaryColor};
   }
+  ${(props) =>
+    `margin:${props.top || 0} ${props.right || 0} ${props.bottom || 0} ${
+      props.left || 0
+    }`};
   text-decoration: none;
   cursor: pointer;
 `;

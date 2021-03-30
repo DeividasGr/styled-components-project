@@ -12,7 +12,7 @@ function Header() {
           title="beachwalk resort"
           text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam quibusdam fugiat consectetur dignissimos non eius."
         >
-          {<PrimaryBtn>view details</PrimaryBtn>}
+          <PrimaryBtn top="1rem">view details</PrimaryBtn>
         </Banner>
       </Hero>
     </div>
