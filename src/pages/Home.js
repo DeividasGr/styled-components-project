@@ -1,6 +1,6 @@
 import About from '../components/home/About';
 import Header from '../components/home/Header';
-import Rooms from '../components/home/Room';
+import Rooms from '../components/home/Rooms';
 
 function Home() {
   return (
